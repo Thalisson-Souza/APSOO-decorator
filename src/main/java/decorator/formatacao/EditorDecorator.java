@@ -4,9 +4,12 @@ import decorator.editor.EditorTexto;
 
 /** Decorator abstrato do padrão Decorator. */
 public abstract class EditorDecorator implements EditorTexto {
-    protected EditorTexto editor;
+    protected final EditorTexto editor;
 
-    public EditorDecorator(EditorTexto editor) {
+    protected EditorDecorator(EditorTexto editor) {
+        if (editor == null) {
+            throw new IllegalArgumentException("O editor decorado é obrigatório.");
+        }
         this.editor = editor;
     }
 
