@@ -1,26 +1,41 @@
-# Decorator
+# Etapa 2 - Implementação e revisão crítica
 
-## Cenário
+## Prompt utilizado
 
-Um editor de texto simples que no começo só exibe o texto digitado. O sistema
-precisa permitir formatações como negrito, itálico e sublinhado. Criar uma
-classe para cada combinação (ex.: TextoNegrito, TextoNegritoItalico) faria o
-número de classes crescer muito rápido.
+```text
+Oi, preciso fazer um trabalho de padrões de projeto em Java usando o Decorator. O cenário é um editor de texto simples que no começo só mostra o texto que o usuário digitou, mas tem que dar pra adicionar formatação tipo negrito, itálico e sublinhado, e combinar elas sem ficar criando uma classe pra cada combinação (TextoNegritoItalico e essas coisas).
 
-## Requisitos
+Eu já fiz o diagrama UML assim: uma interface EditorTexto (Component) com o método String exibir(), uma classe EditorBasico (ConcreteComponent) que só devolve o texto, uma classe abstrata EditorDecorator (Decorator) que implementa EditorTexto e guarda uma referência pra um EditorTexto, e os decoradores NegritoDecorator, ItalicoDecorator e SublinhadoDecorator que estendem o EditorDecorator.
 
-Utilize o padrão Decorator para desacoplar o editor básico das formatações,
-permitindo adicionar e combinar formatações dinamicamente sem modificar a classe
-original do editor.
+Pode implementar seguindo esse diagrama? Coloca cada classe no seu arquivo, usa os pacotes decorator.editor, decorator.formatacao e decorator.app, e faz uma Main que mostre as formatações sendo combinadas. Usa Java 11 com Maven, sem dependência externa.
+```
 
-Enunciado completo: [AnaProjOO__Aula08_AP07.pdf](AnaProjOO__Aula08_AP07.pdf)
+## O que foi feito na `v2-p1`
 
-## Organização das entregas
+Commit da implementação inicial: [ver commit](https://github.com/Thalisson-Souza/APSOO-decorator/commit/83d18c5e28d54ed3d515f1f5088bdbee87ba71e2)
 
-As etapas foram organizadas nas seguintes branches:
+Foi implementada a estrutura inicial do Decorator em Java seguindo o diagrama da
+v1. `EditorTexto` é o Component, `EditorBasico` o ConcreteComponent,
+`EditorDecorator` o Decorator e `NegritoDecorator`, `ItalicoDecorator` e
+`SublinhadoDecorator` os ConcreteDecorators.
 
-- [v1 — diagrama UML](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v1)
-- [v2-p1 — implementação e revisão crítica](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v2-p1)
-- [v2-p2 — implementação melhorada](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v2-p2)
-- [v3 — extensão com Tachado e Caixa Alta](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v3)
-- [v4 — análise de uma solução alternativa](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v4)
+A `Main` mostra as formatações combinadas sem ter uma classe pra cada combinação.
+
+## Parte 2 — Revisão crítica
+
+A implementação segue bem o diagrama e o Decorator do GoF. O `EditorDecorator` é um `EditorTexto` e guarda um `EditorTexto`, por isso dá pra fazer `new ItalicoDecorator(new NegritoDecorator(texto))`. Cada decorador chama o `exibir()` de dentro e só coloca a sua tag, e o `EditorBasico` não foi mexido.
+
+Mas tem uns pontos incompletos. O cenário fala de texto digitado pelo usuário e o texto é fixo no código, não tem como digitar nem mudar depois.
+
+O requisito pede um programa que permita combinar as formatações, a `Main` só imprime 4 combinações prontas, o usuário não escolhe nada...
+
+No `EditorDecorator` o atributo `editor` não é `final` e não tem validação, `new NegritoDecorator(null)` passa e só estoura `NullPointerException` no `exibir()`.
+
+Não tem testes, a `Main` só imprime e ninguém confere se a saída tá certa.
+
+## Melhorias na v2-p2
+
+Na `v2-p2`, realizei melhorias, como: deixar o usuário digitar o texto e escolher
+as formatações, validação de nulo, atributo `final` e testes.
+
+[Acessar a v2-p2 — implementação melhorada](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v2-p2)
