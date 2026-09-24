@@ -13,8 +13,6 @@ Utilize o padrão Decorator para desacoplar o editor básico das formatações,
 permitindo adicionar e combinar formatações dinamicamente sem modificar a classe
 original do editor.
 
-Enunciado completo: [AnaProjOO__Aula08_AP07.pdf](AnaProjOO__Aula08_AP07.pdf)
-
 ## Organização das entregas
 
 As etapas foram organizadas nas seguintes branches:
