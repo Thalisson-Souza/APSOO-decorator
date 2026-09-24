@@ -7,7 +7,9 @@ O diagrama com os papéis do padrão Decorator:
 - `EditorDecorator`: Decorator
 - `NegritoDecorator`, `ItalicoDecorator` e `SublinhadoDecorator`: ConcreteDecorator
 
-![Diagrama UML do Decorator](anexos/decorator-UML.png)
+<p align="center">
+  <img src="anexos/decorator-UML.png" alt="Diagrama UML do Decorator">
+</p>
 
 Objetivo foi separar o editor básico das formatações, cada formatação sendo uma classe que embrulha o editor, pra não ter que criar uma classe pra cada combinação.
 
