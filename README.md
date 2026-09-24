@@ -1,26 +1,18 @@
-# Decorator
+# Etapa 2 — Implementação melhorada
 
-## Cenário
+Commit das melhorias: [ver commit](https://github.com/Thalisson-Souza/APSOO-decorator/commit/7e197d6db047f03621ac29af3f42561d2e70c9fd)
 
-Um editor de texto simples que no começo só exibe o texto digitado. O sistema
-precisa permitir formatações como negrito, itálico e sublinhado. Criar uma
-classe para cada combinação (ex.: TextoNegrito, TextoNegritoItalico) faria o
-número de classes crescer muito rápido.
+A `Main` agora deixa o usuário digitar o texto e escolher pelo menu as formatações, na ordem que quiser. Cada escolha embrulha o editor atual num novo decorador.
 
-## Requisitos
+O `EditorBasico` ganhou o `digitar()` pra trocar o texto. Como os decoradores chamam o `exibir()` na hora, a formatação vale pro texto novo também.
 
-Utilize o padrão Decorator para desacoplar o editor básico das formatações,
-permitindo adicionar e combinar formatações dinamicamente sem modificar a classe
-original do editor.
+O `EditorDecorator` agora tem o `editor` como `final` e valida nulo no construtor. O `EditorBasico` também não aceita texto nulo.
 
-Enunciado completo: [AnaProjOO__Aula08_AP07.pdf](AnaProjOO__Aula08_AP07.pdf)
+Adição de testes pra validar decorador sozinho, encadeamento, repetir decorador, trocar texto e rejeitar nulo. Antes isso só era executado, não validado.
 
-## Organização das entregas
+Tudo ainda mantendo o padrão Decorator, nenhum decorador concreto precisou mudar.
 
-As etapas foram organizadas nas seguintes branches:
+## Próxima etapa
 
-- [v1 — diagrama UML](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v1)
-- [v2-p1 — implementação e revisão crítica](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v2-p1)
-- [v2-p2 — implementação melhorada](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v2-p2)
-- [v3 — extensão com Tachado e Caixa Alta](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v3)
-- [v4 — análise de uma solução alternativa](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v4)
+A extensão com Tachado e Caixa Alta está em
+[v3 — extensão do sistema](https://github.com/Thalisson-Souza/APSOO-decorator/tree/v3).
